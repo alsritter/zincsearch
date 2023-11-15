@@ -6,7 +6,7 @@
 VERSION=`git describe --tags --always` # eg.: 0.2.5
 BUILD_DATE=`date +%Y%m%d` # eg.: 20220701
 COMMIT_HASH=`git rev-parse HEAD` #
-IMAGE="zinclabs/zincsearch"
+IMAGE="registry.cn-shenzhen.aliyuncs.com/qjwwy-pro/zinc"
 
 if [ -n "$1" ]; then
   IMAGE="$1" #

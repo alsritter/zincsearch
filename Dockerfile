@@ -66,8 +66,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Import the user and group files from the builder.
-COPY --from=builder /etc/passwd /etc/passwd
-COPY --from=builder /etc/group /etc/group
+# COPY --from=builder /etc/passwd /etc/passwd
+# COPY --from=builder /etc/group /etc/group
 
 # Copy the ssl certificates
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/

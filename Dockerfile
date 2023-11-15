@@ -66,8 +66,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Import the user and group files from the builder.
-# COPY --from=builder /etc/passwd /etc/passwd
-# COPY --from=builder /etc/group /etc/group
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
 
 # Copy the ssl certificates
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
@@ -78,9 +78,6 @@ COPY --from=builder  /go/src/github.com/zincsearch/zincsearch/zincsearch /go/bin
 # Create directories that can be used to keep ZincSearch data persistent along with host source or named volumes
 COPY --from=builder --chown=zincsearch:zincsearch /var/lib/zincsearch /var/lib/zincsearch
 COPY --from=builder --chown=zincsearch:zincsearch /data /data
-
-# Use an unprivileged user.
-USER zincsearch:zincsearch
 
 # Port on which the service will be exposed.
 EXPOSE 4080
